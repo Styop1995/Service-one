@@ -16,12 +16,12 @@ public class ReactiveMongoConfiguration
   @Bean
   public ReactiveMongoTemplate mongoTemplate() {
     return new ReactiveMongoTemplate(
-        mongoClient(), getDatabaseName());
+        reactiveMongoClient(), getDatabaseName());
   }
 
-  @Bean
-  public MongoClient mongoClient() {
-    return MongoClients.create();
+  @Override
+  public MongoClient reactiveMongoClient() {
+    return MongoClients.create("mongodb://admin:admin@3.137.153.129:27017");
   }
 
   @Override
